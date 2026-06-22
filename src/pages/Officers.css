@@ -1,0 +1,135 @@
+/* ===== Officers page layout ===== */
+.officers-page { display: flex; flex-direction: column; gap: 20px; }
+
+/* ===== Mini stat strip ===== */
+.officer-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.officer-stat-card {
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.officer-stat-value {
+  font-size: 1.9rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.officer-stat-label {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* ===== Card grid ===== */
+.officers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(224px, 1fr));
+  gap: 14px;
+}
+
+/* ===== Officer card ===== */
+.officer-card {
+  padding: 20px;
+  cursor: pointer;
+  transition: var(--transition);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.officer-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+  border-color: rgba(59, 91, 219, 0.18);
+}
+
+.officer-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 4px;
+}
+
+.officer-avatar {
+  width: 46px; height: 46px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--brand-mid), var(--brand-dark));
+  color: #fff;
+  font-size: 0.88rem;
+  font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  letter-spacing: 0.06em;
+  flex-shrink: 0;
+}
+.officer-avatar.lg {
+  width: 52px; height: 52px;
+  font-size: 1rem;
+  border-radius: var(--radius);
+}
+
+.officer-name {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+.officer-rank, .officer-station {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.officer-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 4px 0;
+}
+
+.officer-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.officer-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex: 1;
+}
+.officer-stat span {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+.officer-stat small {
+  font-size: 0.66rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* ===== Profile modal head ===== */
+.officer-profile-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 4px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .officer-stats { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .officer-stats { grid-template-columns: 1fr 1fr; }
+  .officers-grid { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,24 @@
+/* ========= Layout wrapper ========= */
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.layout-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin-left: 244px;
+  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.layout.sidebar-collapsed .layout-main {
+  margin-left: 70px;
+}
+
+.layout-content {
+  flex: 1;
+  padding: 28px 28px;
+  overflow-x: hidden;
+}
