@@ -1,25 +1,17 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Shield, Eye, EyeOff, Lock, Mail, AlertCircle, Users, AlertTriangle, Activity } from 'lucide-react';
-import { useAlerts, useOfficers, useUsers } from '../hooks/useAlerts';
+import { Shield, Eye, EyeOff, Lock, Mail, AlertCircle } from 'lucide-react';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../services/firebase';
 import './Login.css';
 
 export default function Login() {
   const navigate = useNavigate();
-  const [email,    setEmail]    = useState('admin@nepalpolice.gov.np');
+  const [email, setEmail] = useState('admin@nepalpolice.gov.np');
   const [password, setPassword] = useState('');
   const [showPass, setShowPass] = useState(false);
-  const [loading,  setLoading]  = useState(false);
-  const [error,    setError]    = useState('');
-
-  const { alerts }   = useAlerts();
-  const { officers } = useOfficers();
-  const { users }    = useUsers();
-
-  const activeOfficers  = officers.filter(o => o.status === 'available').length;
-  const activeIncidents = alerts.filter(a => a.status !== 'resolved').length;
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -28,12 +20,10 @@ export default function Login() {
     setLoading(true);
 
     try {
-      // 1. Try to log in
       await signInWithEmailAndPassword(auth, email, password);
       setLoading(false);
       navigate('/dashboard');
     } catch (err) {
-      // 2. If user doesn't exist (or invalid credential in newer Firebase SDKs), try to create it
       if (err.code === 'auth/user-not-found' || err.code === 'auth/invalid-credential' || err.code === 'auth/invalid-login-credentials') {
         try {
           await createUserWithEmailAndPassword(auth, email, password);
@@ -64,60 +54,14 @@ export default function Login() {
         <div className="grid-overlay" />
       </div>
 
-      {/* ── Left panel ── */}
-      <div className="login-left">
-        <div className="login-brand">
-          <div className="brand-logo">
-            <Shield size={34} strokeWidth={1.8} />
-          </div>
-          <h1>Nepal Police</h1>
-          <p>Smart Emergency Response System</p>
-          <div className="brand-divider" />
-          <p className="brand-tagline">
-            Connecting responders with citizens<br />when every second counts.
-          </p>
-        </div>
-
-        {/* Live stat chips */}
-        <div className="login-stats-row">
-          <div className="stat-chip">
-            <div className="stat-chip-icon" style={{ background: 'rgba(59,91,219,0.2)' }}>
-              <Users size={15} style={{ color: '#748ffc' }} />
-            </div>
-            <span>
-              {activeOfficers > 0
-                ? activeOfficers
-                : officers.length > 0 ? officers.length : '—'}
-            </span>
-            <small>Officers online</small>
-          </div>
-          <div className="stat-chip">
-            <div className="stat-chip-icon" style={{ background: 'rgba(240,62,62,0.2)' }}>
-              <AlertTriangle size={15} style={{ color: '#ff8787' }} />
-            </div>
-            <span>
-              {alerts.length > 0 ? activeIncidents : '—'}
-            </span>
-            <small>Live incidents</small>
-          </div>
-          <div className="stat-chip">
-            <div className="stat-chip-icon" style={{ background: 'rgba(47,158,68,0.2)' }}>
-              <Activity size={15} style={{ color: '#69db7c' }} />
-            </div>
-            <span>{users.length > 0 ? users.length : '—'}</span>
-            <small>Registered users</small>
-          </div>
-        </div>
-      </div>
-
-      {/* ── Right panel — login card ── */}
-      <div className="login-right">
+      {/* ── Login Container ── */}
+      <div className="login-container">
         <div className="login-card">
           <div className="login-card-header">
-            <div className="login-shield-icon">
-              <Shield size={22} strokeWidth={2} />
+            <div className="login-shield-icon" style={{ overflow: 'hidden', borderRadius: '50%', width: '90px', height: '90px', display: 'flex', justifyContent: 'center', alignItems: 'center', background: 'transparent', padding: 0, margin: '0 auto 15px auto' }}>
+              <img src="/sankatmochan-logo.jpg" alt="Sankatmochan Logo" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }} />
             </div>
-            <h2>Welcome back</h2>
+            <h2>Admin Login</h2>
             <p>Sign in to SERS Command Center</p>
           </div>
 
@@ -189,10 +133,6 @@ export default function Login() {
           </form>
 
           <div className="login-footer">
-            <div className="security-badge">
-              <Lock size={11} />
-              <span>256-bit TLS encrypted · Government grade</span>
-            </div>
             <p className="login-disclaimer">
               Unauthorized access is a criminal offence under Nepal IT Act 2063.
             </p>

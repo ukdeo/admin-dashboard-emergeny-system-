@@ -429,15 +429,7 @@ export default function Settings() {
             <div className="card settings-panel animate-in">
               <h2 className="settings-panel-title">Security Settings</h2>
               <div className="settings-section">
-                <div className="security-info-box">
-                  <Lock size={16} />
-                  <div>
-                    <p style={{ fontWeight: 700 }}>Two-Factor Authentication</p>
-                    <p className="text-muted">Your account is protected with 2FA via government OTP system</p>
-                  </div>
-                  <span className="badge badge-green">Active</span>
-                </div>
-                <h3 className="settings-sub-title">Change Password</h3>
+                <h3 className="settings-sub-title" style={{ marginTop: 0 }}>Change Password</h3>
                 {pwdError && <div style={{ color: 'var(--danger)', fontSize: '0.85rem', marginBottom: '10px' }}>{pwdError}</div>}
                 {pwdSuccess && <div style={{ color: 'var(--success)', fontSize: '0.85rem', marginBottom: '10px' }}>{pwdSuccess}</div>}
                 <div className="form-group">

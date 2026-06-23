@@ -2,9 +2,13 @@
 .login-page {
   min-height: 100vh;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
   position: relative;
   overflow: hidden;
   background: #0c0e1a;
+  padding: 40px;
 }
 
 /* ── Background orbs ───────────────────────────────── */
@@ -53,106 +57,22 @@
   background-size: 52px 52px;
 }
 
-/* ── Left panel ────────────────────────────────────── */
-.login-left {
-  flex: 1;
+/* ── Login Container ───────────────────────────────────── */
+.login-container {
+  width: 100%;
+  max-width: 440px;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  padding: 64px;
+  padding: 50px 40px;
   position: relative;
   z-index: 1;
-}
-
-.login-brand { color: #fff; max-width: 440px; }
-
-.brand-logo {
-  width: 68px; height: 68px;
-  background: linear-gradient(135deg, var(--brand-mid), var(--brand-dark));
-  border-radius: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  margin-bottom: 28px;
-  box-shadow: 0 8px 32px rgba(59, 91, 219, 0.50);
-  border: 1px solid rgba(76, 110, 245, 0.4);
-}
-
-.login-brand h1 {
-  font-size: 2.55rem;
-  font-weight: 900;
-  letter-spacing: -0.03em;
-  background: linear-gradient(130deg, #fff 40%, #748ffc);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 10px;
-  line-height: 1.1;
-}
-.login-brand > p {
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.45);
-  font-weight: 400;
-}
-
-.brand-divider {
-  width: 44px; height: 3px;
-  background: linear-gradient(90deg, var(--brand-light), transparent);
-  border-radius: 99px;
-  margin: 22px 0;
-}
-.brand-tagline {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.35);
-  font-style: italic;
-  line-height: 1.5;
-}
-
-/* ── Stat chips ────────────────────────────────────── */
-.login-stats-row {
-  display: flex;
-  gap: 14px;
-  margin-top: 52px;
-  flex-wrap: wrap;
-}
-.stat-chip {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: var(--radius);
-  padding: 14px 18px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  backdrop-filter: blur(12px);
-  min-width: 100px;
-  text-align: center;
-  transition: background 0.2s;
-}
-.stat-chip:hover { background: rgba(255, 255, 255, 0.09); }
-.stat-chip-icon {
-  width: 30px; height: 30px;
-  border-radius: var(--radius-xs);
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 3px;
-}
-.stat-chip span  { font-size: 1.35rem; font-weight: 800; color: #fff; line-height: 1; }
-.stat-chip small { font-size: 0.66rem; color: rgba(255,255,255,0.38); letter-spacing: 0.07em; text-transform: uppercase; }
-
-/* ── Right panel ───────────────────────────────────── */
-.login-right {
-  width: 480px;
-  min-width: 420px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 44px 40px;
-  position: relative;
-  z-index: 1;
-  background: rgba(10, 12, 24, 0.82);
-  border-left: 1px solid rgba(59, 91, 219, 0.15);
+  background: rgba(16, 18, 35, 0.75);
+  border: 1px solid rgba(59, 91, 219, 0.25);
+  border-radius: 28px;
   backdrop-filter: blur(24px);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+  margin: 0 auto;
 }
 
 .login-card {
@@ -312,11 +232,12 @@
 
 /* ── Responsive ────────────────────────────────────── */
 @media (max-width: 900px) {
-  .login-left { display: none; }
-  .login-right {
+  .login-container {
     width: 100%; min-width: unset;
     background: #0c0e1a;
-    border-left: none;
+    border: none;
+    border-radius: 0;
     padding: 32px 20px;
+    box-shadow: none;
   }
 }

@@ -8,14 +8,14 @@ import { useStation } from '../hooks/useStation';
 import './Sidebar.css';
 
 const navItems = [
-  { path: '/dashboard',     icon: LayoutDashboard, label: 'Dashboard' },
-  { path: '/alerts',        icon: AlertTriangle,   label: 'Live Alerts',   badge: true },
-  { path: '/map',           icon: Map,             label: 'Map Monitor' },
-  { path: '/officers',      icon: Users,           label: 'Officers' },
-  { path: '/reports',       icon: FileText,        label: 'Case Reports' },
-  { path: '/analytics',     icon: BarChart2,       label: 'Analytics' },
-  { path: '/notifications', icon: Bell,            label: 'Notifications', badge: true },
-  { path: '/settings',      icon: Settings,        label: 'Settings' },
+  { path: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
+  { path: '/alerts', icon: AlertTriangle, label: 'Live Alerts', badge: true },
+  { path: '/map', icon: Map, label: 'Map Monitor' },
+  { path: '/officers', icon: Users, label: 'Officers' },
+  { path: '/reports', icon: FileText, label: 'Case Reports' },
+  { path: '/analytics', icon: BarChart2, label: 'Analytics' },
+  { path: '/notifications', icon: Bell, label: 'Notifications', badge: true },
+  { path: '/settings', icon: Settings, label: 'Settings' },
 ];
 
 export default function Sidebar({ collapsed, setCollapsed }) {
@@ -26,12 +26,12 @@ export default function Sidebar({ collapsed, setCollapsed }) {
     <aside className={`sidebar ${collapsed ? 'collapsed' : ''}`}>
       {/* Logo */}
       <div className="sidebar-logo">
-        <div className="logo-icon">
-          <Shield size={20} strokeWidth={2.2} />
+        <div className="logo-icon" style={{ overflow: 'hidden', borderRadius: '50%', background: 'transparent', width: '56px', height: '56px', minWidth: '56px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <img src="/sankatmochan-logo.jpg" alt="Sankatmochan Logo" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         </div>
         {!collapsed && (
           <div className="logo-text">
-            <span className="logo-title">Nepal Police</span>
+            <span className="logo-title">Sankatmochan</span>
             <span className="logo-sub">SERS Command</span>
           </div>
         )}
